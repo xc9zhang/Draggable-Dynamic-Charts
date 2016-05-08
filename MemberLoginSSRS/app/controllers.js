@@ -14,6 +14,7 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
             });
         };
 
+
         $scope.load_layout = function () {
             var promiseGet = bookingInfoService.getLayout();
             promiseGet.then(function (d) {
@@ -30,10 +31,7 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
             selected: null,
             templates: [
                 { type: "hbar", id: 2, img: 'content/img/hbar.jpg', name: 'Horizontal Bar Chart' },
-                { type: "TEB2Bvbar", id: 3, img: 'content/img/vbar.jpg', name: 'TEB2B 24h Chart' },
-                { type: "TE2Uvbar", id: 4, img: 'content/img/vbar.jpg', name: 'TE2U 24h Chart' },
-                { type: "CTRIPvbar", id: 5, img: 'content/img/vbar.jpg', name: 'CTRIP 24h Chart' },
-                { type: "HOPPERvbar", id: 6, img: 'content/img/vbar.jpg', name: 'HOPPER 24h Chart' },
+                { type: "vbar", id: 3, img: 'content/img/vbar.jpg', name: '24h Chart' },
                 { type: "pie", id: 7, img: 'content/img/pie.jpg', name: 'Pie Chart' },
                 { type: "container", id: 1, img: 'content/img/box.jpg', columns: [[], []] }
             ],
@@ -96,21 +94,7 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
                 }]
             }
         };
-        $scope.TEB2BData = [];
-        $scope.TEB2BSeries = ['TEB2B'];
-        $scope.TEB2BLabels = [];
 
-        $scope.TE2UData = [];
-        $scope.TE2USeries = ['TE2U'];
-        $scope.TE2ULabels = [];
-
-        $scope.HOPPERData = [];
-        $scope.HOPPERSeries = ['HOPPER'];
-        $scope.HOPPERLabels = [];
-
-        $scope.CTRIPData = [];
-        $scope.CTRIPSeries = ['CTRIP'];
-        $scope.CTRIPLabels = [];
 
         $scope.currentdate = new Date();
 
@@ -134,23 +118,22 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
         };
         
         function loadData(data) {
-            $scope.TicketsTotal = data.TEB2BTotal + data.TE2UTotal + data.HOPPERTotal;
             $scope.piedata = [
                 {
-                    key: "TEB2B",
-                    y: data.TEB2BTotal
+                    key: "Hello1",
+                    y: data.Hello1Total
                 },
                 {
-                    key: "TE2U",
-                    y: data.TE2UTotal
+                    key: "Hello2",
+                    y: data.Hello2Total
                 },
                 {
-                    key: "HOPPER",
-                    y: data.HOPPERTotal
+                    key: "Hello3",
+                    y: data.Hello3Total
                 },
                 {
-                    key: "CTRIP",
-                    y: data.CTRIPTotal
+                    key: "Hello4",
+                    y: data.Hello4Total
                 }
             ];
 
@@ -161,65 +144,38 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
                     "color": "#1f77b4",
                     "values": [
                         {
-                            "label": "TEB2B",
-                            "value": data.TEB2BTotal
+                            "label": "Hello1",
+                            "value": data.Hello1Total
                         },
                         {
-                            "label": "TE2U",
-                            "value": data.TE2UTotal
+                            "label": "Hello2",
+                            "value": data.Hello2Total
                         },
                         {
-                            "label": "HOPPER",
-                            "value": data.HOPPERTotal
+                            "label": "Hello3",
+                            "value": data.Hello3Total
                         },
                         {
-                            "label": "CTRIP",
-                            "value": data.CTRIPTotal
+                            "label": "Hello4",
+                            "value": data.Hello4Total
                         }
                     ]
                 }
             ];
 
-            $scope.TEB2BServerTime = data.TEB2BMaxDateTime;
-            $scope.TE2UServerTime = data.TE2UMaxDateTime;
-            $scope.HOPPERServerTime = data.HOPPERMaxDateTime;
-            $scope.CTRIPServerTime = data.CTRIPMaxDateTime;
+            $scope.HelloServerTime = data.CurrentServerTime;
 
-            $scope.TEB2BLabels = $.map(data.TEB2BList, function(item) {
+
+            $scope.HelloLabels = $.map(data.HelloList, function(item) {
                 return item.Hour + '';
             });
-            $scope.TEB2BData = [
-                $.map(data.TEB2BList, function(item) {
+            $scope.HelloData = [
+                $.map(data.HelloList, function(item) {
                     return item.Tickets;
                 })
             ];
 
-            $scope.TE2ULabels = $.map(data.TE2UList, function (item) {
-                return item.Hour + '';
-            });
-            $scope.TE2UData = [
-                $.map(data.TE2UList, function (item) {
-                    return item.Tickets;
-                })
-            ];
-
-            $scope.HOPPERLabels = $.map(data.HOPPERList, function (item) {
-                return item.Hour + '';
-            });
-            $scope.HOPPERData = [
-                $.map(data.HOPPERList, function (item) {
-                    return item.Tickets;
-                })
-            ];
-
-            $scope.CTRIPLabels = $.map(data.CTRIPList, function (item) {
-                return item.Hour + '';
-            });
-            $scope.CTRIPData = [
-                $.map(data.CTRIPList, function (item) {
-                    return item.Tickets;
-                })
-            ];
+           
         };
 
 
@@ -281,22 +237,12 @@ function ($scope, backendHubProxy, bookingInfoService,toastr) {
         };
 
         $scope.totaldata = [];
-        $scope.TEB2BServerTime = '';
-        $scope.TE2UServerTime = '';
-        $scope.HOPPERServerTime = '';
-        $scope.CTRIPServerTime = '';
+        $scope.HelloServerTime = '';
 
-        $scope.TicketsTotal = 0;
-
-        $scope.TEB2BData = [];
-
-        $scope.TEB2BLabels = [];
-        $scope.TE2UData = [];
-        $scope.TE2ULabels = [];
-        $scope.HOPPERData = [];
-        $scope.HOPPERLabels = [];
-        $scope.CTRIPData = [];
-        $scope.CTRIPLabels = [];
+        $scope.HelloData = [];
+        $scope.HelloSeries = ['Hi'];
+        $scope.HElloLabels = [];
+       
 
         var bookingDataHub = backendHubProxy(backendHubProxy.defaultServer, 'performanceHub');
         // hub func

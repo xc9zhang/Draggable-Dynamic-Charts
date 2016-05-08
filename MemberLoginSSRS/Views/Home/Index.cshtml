@@ -41,50 +41,18 @@
         <div class="clearfix"></div>
     </div>
 </script>
-<script type="text/ng-template" id="TEB2Bvbar.html">
+<script type="text/ng-template" id="vbar.html">
     <div class="container-element box box-blue">
         <h3>{{item.name}}</h3>
         <div class="chart-container">
-            <canvas id="bar" class="chart chart-bar" chart-data="$parent.TEB2BData"
-                    chart-labels="$parent.TEB2BLabels" chart-series="$parent.TEB2BSeries"
+            <canvas id="bar" class="chart chart-bar" chart-data="$parent.HelloData"
+                    chart-labels="$parent.HelloLabels" chart-series="$parent.HelloSeries"
                     chart-options="$parent.ChartOptions"></canvas>
         </div>
         <div class="clearfix"></div>
     </div>
 </script>
-<script type="text/ng-template" id="TE2Uvbar.html">
-    <div class="container-element box box-blue">
-        <h3>{{item.name}}</h3>
-        <div class="chart-container">
-            <canvas id="bar" class="chart chart-bar" chart-data="$parent.TE2UData"
-                    chart-labels="$parent.TE2ULabels" chart-series="$parent.TE2USeries"
-                    chart-options="$parent.ChartOptions"></canvas>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</script>
-<script type="text/ng-template" id="CTRIPvbar.html">
-    <div class="container-element box box-blue">
-        <h3>{{item.name}}</h3>
-        <div class="chart-container">
-            <canvas id="bar" class="chart chart-bar" chart-data="$parent.CTRIPData"
-                    chart-labels="$parent.CTRIPLabels" chart-series="$parent.CTRIPSeries"
-                    chart-options="$parent.ChartOptions"></canvas>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</script>
-<script type="text/ng-template" id="HOPPERvbar.html">
-    <div class="container-element box box-blue">
-        <h3>{{item.name}}</h3>
-        <div class="chart-container">
-            <canvas id="bar" class="chart chart-bar" chart-data="$parent.HOPPERData"
-                    chart-labels="$parent.HOPPERLabels" chart-series="$parent.HOPPERSeries"
-                    chart-options="$parent.ChartOptions"></canvas>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</script>
+
 <script type="text/ng-template" id="pie.html">
     <div class="container-element box box-blue">
         <h3>{{item.name}}</h3>
@@ -115,7 +83,7 @@
             <div ng-repeat="(zone, list) in models.dropzones" class="col-md-6">
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
-                    <h3>Dropzone {{zone}}</h3>
+                    <h3 ng-if="isdesignmode">Dropzone {{zone}}</h3>
                     <div ng-include="'list.html'"></div>
                 </div>
             </div>

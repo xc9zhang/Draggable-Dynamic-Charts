@@ -10,8 +10,5 @@ namespace MemberLoginSSRS.Models
         public int Tickets { get; set; }
         public int Hour { get; set; }
 
-        public string Client { get; set; }
-
-        public DateTime MaxDate { get; set; }
-    }
+   }
 }

@@ -17,14 +17,14 @@ namespace MemberLoginSSRS.Controllers
 
         public IHttpActionResult Post(LayoutRequestDTO layoutDto)
         {
-            var data = ReportHelper.SaveLayout(layoutDto.Layout, User.Identity.Name);
+            var data = ReportHelper.SaveLayout(layoutDto.Layout, "John.Smith");
             return Ok(data);
         }
 
 
         public IHttpActionResult Get()
         {
-            var data = ReportHelper.GetLayout(User.Identity.Name);
+            var data = ReportHelper.GetLayout("John.Smith");
             return Ok(data);
         }
     }
